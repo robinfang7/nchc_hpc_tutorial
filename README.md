@@ -7,7 +7,8 @@
 2. 軟體
    1. Slurm任務調度
    2. Lmod軟體管理
-   3. Singularity容器
+   3. Singularity/Apptainer容器
+   4. 安裝軟體
 3. 實作展示
    1. 登入主機、查詢資源、submit job
    2. CPU叢集案例
