@@ -1,0 +1,9 @@
+/home/u8880716/miniWeather/c/build/CMakeFiles/rebuild_cache.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/edit_cache.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/test.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/serial_test.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/openmp.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/serial.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/mpi_test.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/mpi.dir
+/home/u8880716/miniWeather/c/build/CMakeFiles/openmp_test.dir

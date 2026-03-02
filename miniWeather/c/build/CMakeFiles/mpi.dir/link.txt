@@ -1,0 +1,1 @@
+/pkg/compiler/intel/2024/mpi/2021.11/bin/mpicxx -Ofast -march=native -mtune=native -DNO_INFORM -std=c++11 -I/home/u8880716/opt/include -rdynamic CMakeFiles/mpi.dir/miniWeather_mpi.cpp.o -o mpi  -L/home/u8880716/opt/lib -lpnetcdf 
