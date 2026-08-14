@@ -1,0 +1,40 @@
+BootStrap: docker
+From: nvcr.io/nvidia/pytorch:23.01-py3
+
+%post
+    # 1. 關閉 apt 的互動式詢問介面
+    export DEBIAN_FRONTEND=noninteractive
+    export TZ=Asia/Taipei
+
+    # 2. 切換為 NCHC 鏡像站以加速下載 (必須放在 apt-get update 之前)
+    sed -i 's|http://archive.ubuntu.com/ubuntu/|http://free.nchc.org.tw/ubuntu/|g' /etc/apt/sources.list
+
+    # 3. 確保編譯所需的工具已安裝
+    apt-get update && apt-get install -y --no-install-recommends \
+        cmake \
+        git \
+        tzdata
+    rm -rf /var/lib/apt/lists/*
+
+    # 4. 設定 Build 階段所需的 Horovod 編譯環境變數
+    export HOROVOD_GPU=CUDA
+    export HOROVOD_GPU_OPERATIONS=NCCL
+    export HOROVOD_NCCL_LINK=SHARED
+    export HOROVOD_WITHOUT_GLOO=1
+    export HOROVOD_WITH_MPI=1
+    export HOROVOD_WITH_PYTORCH=1
+    export HOROVOD_WITHOUT_TENSORFLOW=1
+    export HOROVOD_WITHOUT_MXNET=1
+
+    # 顯式指定 CUDA / MPI 路徑（NVIDIA NGC 容器預設路徑）
+    export HOROVOD_CUDA_HOME=/usr/local/cuda
+
+    # 5. 安裝 Horovod (使用 --no-cache-dir 並加上 --no-build-isolation 以存取既有的 PyTorch)
+    pip install --no-cache-dir --no-build-isolation horovod==0.27.0
+
+%environment
+    # 6. 設定 Runtime 階段的環境變數 (確保執行時使用正確的 CUDA/NCCL 後端)
+    export HOROVOD_GPU=CUDA
+    export HOROVOD_GPU_OPERATIONS=NCCL
+    export PATH=/usr/local/cuda/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
