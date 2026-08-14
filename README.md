@@ -4,9 +4,11 @@
 
 ## 專案說明
 * slurm_lmod_container：說明晶創主機的主要軟體層，Slurm任務調度管理，Lmod環境管理，容器封裝環境設定。  
-* yolo: YOLO是小型模型，可以在個人電腦上進行訓練。此專案說明如何移植到晶創主機訓練YOLO模型。  
+* yolo：YOLO是小型模型，可以在個人電腦上進行訓練。此專案說明如何移植到晶創主機訓練YOLO模型。  
 * horovod：Horovod分散式框架加速Tenslorflow、Pytorch模型於多GPU、多節點環境加速運算。  
-* llama_factory: LLM模型的預訓練、微調。  
+* llama_factory：LLM模型的預訓練、微調。  
+* pytorch_mnist：Pytorch的分散式訓練(DDP)實作。  
+* miniWeather：在CPU叢集的小型流體力學實作。  
 
 ## 最新課程
 [晶創26/25 GPU叢集主機教育訓練-進階(線上課程)](https://edu.nchc.org.tw/course/one_course_introduction.asp?lms_auto_course_id=4153&from_course_list_url=homepage)  
@@ -16,7 +18,7 @@
 本課程教授晶創26與晶創25兩座GPU叢集主機，幫助使用者加速HPC/AI應用程式開發。因應叢集系統的擴展能力，本課程著重多GPU與多節點的調用與運算。  
 
 參加對象：  
- 一般使用者，在linux系統進行AI、科學/工程計算的經驗。  
+ 一般使用者，在linux系統進行AI、科學/工程計算的經驗尤佳。  
 
 課程內容：  
 1. 從0到1，用超級電腦訓練YOLO網路
