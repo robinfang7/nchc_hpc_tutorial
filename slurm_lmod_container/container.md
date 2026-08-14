@@ -53,7 +53,7 @@ exit
 
 ### 找sudo權限的linux電腦，安裝Singularity
 1. 建立客製化容器映像檔需要sudo權限。  
-2. 另尋有sudo權限Linux電腦 (例如Windows WSL, VirtualBox，晶創雲的虛擬機器)建立客製化容器映像檔。注意建立容器映像檔的電腦和運行容器的主機的CPU架構要相容，例如x86 or arm 架構。     
+2. 另尋有sudo權限Linux電腦 (例如Windows WSL, VirtualBox，晶創雲的虛擬機器)建立客製化容器映像檔。注意建立容器映像檔的電腦和運行容器的主機的CPU架��[...] 
 3. 安裝相關依賴庫、Go語言與Singularity。注意Go語言與Singularity版本有搭配。     
 
 #### 1. 安裝Singularity過程
@@ -104,11 +104,11 @@ INFO:      Downloading library image
  ____________________________________ 
 < You will be run over by a bus. >
  ------------------------------------ 
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
+       \   ^__^
+        \  (oo)\_______
+           (__)\       )\/\
+               ||----w |
+               ||     ||
 ```
 [參考來源](https://github.com/apptainer/apptainer/blob/main/INSTALL.md)
 
@@ -164,19 +164,19 @@ Stage: build
     supported sections.
 ```
 1. 標頭 (Header) 定義基底：  
-   位於檔案最頂部，用於定義容器的基礎映像檔來源。最核心的參數是 Bootstrap（指定來源介面，如 docker、library 或 localimage）與 From（指定具體的映像檔，如 ubuntu:22.04 或 nvidia/cuda:11.8.0-devel-ubuntu22.04）。  
+   位於檔案最頂部，用於定義容器的基礎映像檔來源。最核心的參數是 Bootstrap（指定來源介面，如 docker、library 或 localimage）與 From（指定具體的映�[...] 
 2. `%files` (檔案傳輸區段)：  
    負責在建置過程中，將宿主機 (Host) 的檔案安全地複製到容器內。這通常用於注入特定的授權檔、自訂的原始碼或預先寫好的組態設定。  
 3. `%post` (環境建置區段)：  
-   這是 Definition File 中最重要的部分。在此區段內的指令會在容器內部以 root 權限執行，主要用於安裝系統套件（如 apt-get、yum）、編譯軟體（例如從原始碼編譯特定版本的 MPI）以及建立所需的工作目錄。  
+   這是 Definition File 中最重要的部分。在此區段內的指令會在容器內部以 root 權限執行，主要用於安裝系統套件（如 apt-get、yum）、編譯軟體（例如��[...] 
 4. `%environment` 與 `%runscript` (執行期行為設定)：  
-   `%environment` 區塊用於定義容器執行時（而非建置時）生效的環境變數（如 `$PATH` 或 `$LD_LIBRARY_PATH`）。`%runscript` 則定義了當使用者輸入 singularity run 時，容器預設要執行的腳本或指令。  
+   `%environment` 區塊用於定義容器執行時（而非建置時）生效的環境變數（如 `$PATH` 或 `$LD_LIBRARY_PATH`）。`%runscript` 則定義了當使用者輸入 singula[...] 
 5. `%labels` 與 `%help` (元資料與文件)：  
-   用於提升映像檔的可維護性與易用性。`%labels` 以鍵值對形式記錄映像檔的版本、作者及維護者資訊；`%help` 則可撰寫純文字說明，當使用者執行 singularity run-help 時會顯示此容器的使用指南。  
+   用於提升映像檔的可維護性與易用性。`%labels` 以鍵值對形式記錄映像檔的版本、作者及維護者資訊；`%help` 則可撰寫純文字說明，當使用者執行 si[...] 
 
 [參考來源](https://docs.sylabs.io/guides/latest/user-guide/definition_files.html)
 
-範例一：[製作Pytorch with Hororvod](nchc_hpc_tutorial/horovod/README.md) XXX    
+範例一：[製作Pytorch with Hororvod](@robinfang7/nchc_hpc_tutorial/files/horovod/README.md) XXX    
 範例二：Tensorflow for H100  
 ```bash
 Bootstrap: docker
