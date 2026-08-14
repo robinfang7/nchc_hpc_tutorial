@@ -176,7 +176,7 @@ Stage: build
 
 [參考來源](https://docs.sylabs.io/guides/latest/user-guide/definition_files.html)
 
-範例一：[製作Pytorch with Hororvod](@robinfang7/nchc_hpc_tutorial/files/horovod/README.md)    
+範例一：[製作Pytorch with Hororvod](https://github.com/robinfang7/nchc_hpc_tutorial/horovod/README.md)    
 範例二：Tensorflow for H100  
 ```bash
 Bootstrap: docker
