@@ -5,11 +5,11 @@ Horovod 是一個開源的分散式深度學習訓練框架，支援 TensorFlow�
 1. Horovod with Tensorflow 2.x(Keras)  
 2. Horovod with Pytorch  
 
-## Horovod with Tensorflow 2.x (Keras)
-下載Tensorflow 容器
+## Horovod with Tensorflow 2.x (Keras)  
+下載Tensorflow 容器  
 `[userA@cbi-lgn01 ~]$ singularity pull tensorflow_24.05-tf2-py3.sif tensorflow_24.05-tf2-py3.sif`  
 `[userA@cbi-lgn01 ~]$ mv tensorflow_24.05-tf2-py3.sif /work/$(whoami)/sif/`
-查看容器內的CUDA版本
+查看容器內的CUDA版本  
 ```bash
 [userA@cbi-lgn01 ~]$ singularity exec /work/userA/sif/tensorflow_24.05-tf2-py3.sif nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
