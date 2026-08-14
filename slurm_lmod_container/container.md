@@ -234,8 +234,8 @@ sudo singularity build <image>.sif docker-archive://$(pwd)/<name>.tar
 ```
 
 範例
+1. 在Sudo權限的linxu電腦製作映像檔
 ```bash
-# On TWCC VM (製作映像檔的環境)
 ubuntu@vmcpuvm-5372004-iaas:~$ cd bert_mlperf_3.0
 ubuntu@vmcpuvm-5372004-iaas:~/bert_mlperf_3.0$ ls
 a30-run_and_time.sh                      Dockerfile
@@ -252,11 +252,10 @@ ubuntu@vmcpuvm-5372004-iaas:~$ ls
 bert  bert_mlperf_3.0  bert_mlperf_pytorch_2304.sif  cosmoflow_tf.def
 
 # 用sftp傳送映像檔bert_mlperf_pytorch_2304.sif 到晶創25主機
+```
 
-
-# On Nano5 
-# 在Slurm script引用Singularity 映像檔
-
+2. 在晶創主機，在Slurm script啟用Singularity映像檔
+```bash
 #!/bin/bash
 #SBATCH -A <projectID>      # iService Project id
 #SBATCH -J bert             # job name
