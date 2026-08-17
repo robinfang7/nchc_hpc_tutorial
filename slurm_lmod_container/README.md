@@ -41,7 +41,7 @@ mpirun –n $SLURM_NTASKS <application> …
    1.1 引用Miniconda  
    `module load mininconda3/24.11.1`  
    1.2 建立虛擬環境  
-   `conda create <env_name> python=3.x -y`
+   `conda create <env_name> python=3.x -y`  
    1.3 進入虛擬環境  
    `conda activate <env_name>`  
    1.4 安裝套件  
