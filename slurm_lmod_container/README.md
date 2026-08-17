@@ -63,3 +63,11 @@ python train_script.py ...
 
 conda deactivate
 ``` 
+
+## 深度學習軟體堆疊
+
+![深度學習軟體堆疊](https://cdn.phototourl.com/free/2026-08-17-a66704a1-eada-439e-a902-36f50f544369.png)
+
+### Nvidia NGC container
+
+https://docs.nvidia.com/deeplearning/frameworks/pytorch-release-notes/rel-25-11.html
