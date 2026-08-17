@@ -1,21 +1,9 @@
-## [Slurm：任務調度工具，取得、查詢計算資源、提交作業。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Slurm.md)
-## [Lmod：環境管理工具，引用已安裝的編譯器、函式庫、應用程式。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Lmod.md)
-## [Container：引用已封裝依賴項與應用程式的獨立環境。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/container.md)
+# HPC叢集系統的軟體工具
+* [Slurm：任務調度工具，取得、查詢計算資源、提交作業。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Slurm.md)
+* [Lmod：環境管理工具，引用已安裝的編譯器、函式庫、應用程式。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Lmod.md)
+* [Container：引用已封裝依賴項與應用程式的獨立環境。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/container.md)
 
-```mermaid
-flowchart LR
-    A[安裝軟體]
-
-    A --> B[在 HPC 環境安裝<br>無 sudo 權限<br/>引用 Lmod 安裝的軟體]
-    A --> C[另在 Linux 電腦安裝<br>有 sudo 權限<br/>預先安裝 Singularity 容器]
-
-    B --> B1[編譯開源程式碼<br>C/C++、Fortran、CUDA]
-    B --> B2[Miniconda<br>Python 環境]
-    B --> B3[引用 Singularity 容器]
-
-    C --> C1[製作客製化<br>Singularity 映像檔]
-
-```
+![安裝軟體流程](https://cdn.phototourl.com/free/2026-08-17-13850d00-f91d-4825-96b0-fb35bef91965.png)
 
 ## 安裝軟體
 * 編譯語言：C/C++, Fortran, CUDA
@@ -29,13 +17,13 @@ flowchart LR
 ### 原始碼編譯
 1. 在登入節點，編譯原始碼  
    1.1 引用編譯器  
-          `module load gcc, intel`  
+   `module load gcc, intel`  
    1.2 製作makefile  
-          `mkdir build`  
-          `cd build`  
-          `cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-g -O3" ..`  
+   `mkdir build`  
+   `cd build`  
+   `cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-g -O3" ..`  
    1.3 用4個CPU核心編譯makefile，產生執行檔  
-          `make –j 4`  
+   `make –j 4`  
    若編譯過程的時間過長，或佔用太多登入節點的資源，要用計算節點編譯。  
 2. 執行運算的腳本
 ```bash
@@ -75,18 +63,3 @@ python train_script.py ...
 
 conda deactivate
 ``` 
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-
-
