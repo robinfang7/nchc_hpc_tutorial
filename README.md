@@ -3,10 +3,9 @@
 本專案說明國網中心超級電腦晶創26/25(GPU叢集系統)、創進一號(CPU叢集系統)的使用方式。  
 
 ## 專案說明
-* slurm_lmod_container：說明晶創主機的主要軟體層，Slurm任務調度管理，Lmod環境管理，容器封裝環境設定。  
+* hpc_software：說明晶創主機的主要軟體層，Slurm任務調度管理，Lmod環境管理，容器封裝環境設定。  
 * yolo：YOLO是小型模型，可以在個人電腦上進行訓練。此專案說明如何移植到晶創主機訓練YOLO模型。  
 * horovod：Horovod分散式框架加速Tenslorflow、Pytorch模型於多GPU、多節點環境加速運算。  
-* llama_factory：LLM模型的預訓練、微調。  
 * pytorch_mnist：Pytorch的分散式訓練(DDP)實作。  
 * miniWeather：在CPU叢集的小型流體力學實作。  
 
@@ -29,7 +28,5 @@
    1. Slurm任務調度
    2. Lmod軟體管理
    3. Singularity/Apptainer容器
-4. 實作展示  
-   1. 登入主機、查詢資源、提交作業  
-   2. GPU叢集案例  
+4. 實作展示   
 5. 問題與討論
