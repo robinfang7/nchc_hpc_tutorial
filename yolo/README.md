@@ -184,44 +184,74 @@ everything's installed!
 [userA@25a-lgn02 ~]$ uv --version
 uv 0.12.2 (x86_64-unknown-linux-gnu)
 ```
-`/home/<user>/.local/bin` 已在$PATH，表示uv 是預設的執行檔。
+`/home/<user>/.local/bin` 已在$PATH，表示uv是預設的執行檔。
 
-
-建立yolo_uv專案，專案名稱不要用`yolo`，會發生環境異常。  
+建立yolo_uv專案，專案資料夾名稱不要用`yolo`，因為安裝ultralytics後的yolo是執行檔，若專案資料夾名稱為yolo，會發生環境異常。  
+安裝python 3.11的虛擬環境。  
 ```bash
 [userA@25a-lgn02 ~]$ mkdir yolo_uv && cd yolo_uv
-[userA@25a-lgn02 yolo_uv]$ uv init --python 3.11
-Initialized project `yolo-uv`
-[userA@25a-lgn02 yolo_uv]$ ls
-pyproject.toml  README.md  src
-```
-
-安裝python 3.11
-```bash
-[userA@25a-lgn02 yolo_uv]$ uv python install 3.11
-Installed Python 3.11.15 in 4.97s
- + cpython-3.11.15-linux-x86_64-gnu (python3.11)
-```
-
-安裝ultralytics
-```bash
-[userA@25a-lgn02 yolo_uv]$ uv add ultralytics
+[userA@25a-lgn04 yolo_uv]$ uv venv --python 3.11
 Using CPython 3.11.15
 Creating virtual environment at: .venv
-Resolved 56 packages in 5.16s
-      Built yolo-uv @ file:///home/userA/yolo_uv                                                                                         Prepared 55 packages in 1m 52s
-Installed 55 packages in 6.75s
+Activate with: source .venv/bin/activate
+[userA@25a-lgn04 yolo_uv]$ tree -a
+.
+└── .venv
+    ├── bin
+    │   ├── activate
+    │   ├── activate.bat
+    │   ├── activate.csh
+    │   ├── activate.fish
+    │   ├── activate.nu
+    │   ├── activate.ps1
+    │   ├── activate_this.py
+    │   ├── activate.xsh
+    │   ├── deactivate.bat
+    │   ├── pydoc.bat
+    │   ├── python -> /home/userA/.local/share/uv/python/cpython-3.11-linux-x86_64-gnu/bin/python3.11
+    │   ├── python3 -> python
+    │   └── python3.11 -> python
+    ├── CACHEDIR.TAG
+    ├── .gitignore
+    ├── lib
+    │   └── python3.11
+    │       └── site-packages
+    │           ├── _virtualenv.pth
+    │           └── _virtualenv.py
+    ├── lib64 -> lib
+    └── pyvenv.cfg
+
+6 directories, 18 files
+```
+
+啟用虛擬環境，查看python版本 
+```bash
+[userA@25a-lgn04 yolo_uv]$ source .venv/bin/activate
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ python --version
+Python 3.11.15
+```
+
+安裝ultralytics，注意CUDA版本是否接近GPU driver的版本。   
+```bash
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ uv pip install ultralytics
+Resolved 59 packages in 5.30s
+Prepared 59 packages in 2m 24s
+Installed 59 packages in 6.72s
+ + anyio==4.14.2
  + certifi==2026.7.22
- + charset-normalizer==3.4.9
+ + charset-normalizer==3.5.1
  + contourpy==1.3.3
  + cuda-bindings==13.3.1
- + cuda-pathfinder==1.6.0
+ + cuda-pathfinder==1.6.1
  + cuda-toolkit==13.0.3.0
  + cycler==0.12.1
- + filelock==3.32.2
+ + filelock==3.32.3
  + fonttools==4.63.0
  + fsspec==2026.7.0
- + idna==3.18
+ + h11==0.16.0
+ + httpcore==1.0.9
+ + httpx==0.28.1
+ + idna==3.19
  + jinja2==3.1.6
  + kiwisolver==1.5.0
  + markupsafe==3.0.3
@@ -255,41 +285,93 @@ Installed 55 packages in 6.75s
  + python-dateutil==2.9.0.post0
  + pyyaml==6.0.3
  + requests==2.34.2
- + setuptools==83.0.0
+ + setuptools==84.0.0
  + six==1.17.0
  + sympy==1.14.0
  + torch==2.13.0
  + torchvision==0.28.0
  + triton==3.7.1
  + typing-extensions==4.16.0
- + ultralytics==8.4.115
+ + ultralytics==8.4.124
+ + ultralytics-platform==0.1.8
  + ultralytics-thop==2.1.6
  + urllib3==2.7.0
- + yolo-uv==0.1.0 (from file:///home/userA/yolo_uv)
-
-[userA@25a-lgn02 yolo_uv]$ ls -a
-.  ..  .git  .gitignore  pyproject.toml  .python-version  README.md  src  uv.lock  .venv
-[userA@25a-lgn02 yolo_uv]$ ls .venv
-bin  CACHEDIR.TAG  lib  lib64  pyvenv.cfg  share
-
-[userA@25a-lgn02 yolo_uv]$ uv run yolo version
-8.4.115
-[userA@25a-lgn02 yolo_uv]$ uv run python -c "import torch; print(torch.cuda.is_available())"
-True
 ```
 
-`python create_yaml.py`改成`uv run create_yaml.py`  
-
- * 執行訓練前，先修改運算資料的路徑`runs_dir`
+查看yolo版本  
 ```bash
-[userA@25a-lgn02 yolo_uv]$ uv run yolo settings
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ yolo version
+8.4.124
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ yolo checks
+Ultralytics 8.4.124 🚀 Python-3.11.15 torch-2.13.0+cu130 CUDA:0 (NVIDIA H100 NVL, 95320MiB)
+Setup complete ✅ (224 CPUs, 503.0 GB RAM, 134.1/1786.3 GB disk)
+
+OS                     Linux-5.14.0-570.116.1.el9_6.x86_64-x86_64-with-glibc2.34
+Environment            Linux
+Python                 3.11.15
+Install                pip
+Path                   /home/userA/yolo_uv/.venv/lib/python3.11/site-packages/ultralytics
+RAM                    503.03 GB
+Disk                   134.1/1786.3 GB
+CPU                    Intel Xeon Platinum 8480+
+CPU count              224
+GPU                    NVIDIA H100 NVL, 95320MiB
+GPU count              1
+CUDA                   13.0
+
+filelock               ✅ 3.32.3>=3.16.1
+numpy                  ✅ 2.4.6>=1.23.0; platform_system != "Darwin"
+numpy                  ✅ 2.4.6!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,!=2.3.1,!=2.3.2,!=2.3.3,!=2.3.4,>=1.23.0; platform_system == "Darwin"
+matplotlib             ✅ 3.11.1>=3.3.0
+opencv-python          ✅ 5.0.0.93!=4.13.0.90,>=4.7.0
+pillow                 ✅ 12.3.0>=7.1.2
+pyyaml                 ✅ 6.0.3>=5.3.1
+requests               ✅ 2.34.2>=2.23.0
+torch                  ✅ 2.13.0>=1.8.0
+torch                  ✅ 2.13.0!=2.4.0,>=1.8.0; sys_platform == "win32"
+torchvision            ✅ 0.28.0>=0.9.0
+psutil                 ✅ 7.2.2>=5.8.0
+polars                 ✅ 1.43.2>=0.20.0
+nvidia-ml-py           ✅ 13.610.43>=12.0.0
+ultralytics-thop       ✅ 2.1.6>=2.1.6
+ultralytics-platform   ✅ 0.1.8>=0.1.3; python_version >= "3.11"
+```
+
+查看runs的路徑。若runs不在目前路徑下，用`yolo settings reset`重新設定
+```bash
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ yolo settings
 JSONDict("/home/userA/.config/Ultralytics/settings.json"):
 {
   "settings_version": "0.0.7",
-  "datasets_dir": "/ultralytics/datasets",
-  "weights_dir": "/ultralytics/weights",
-  "runs_dir": "/ultralytics/runs",
-  "uuid": "f9edcf00ea1db2d07058a2bf843073420a4673bb3b9154c43d210fe8c5f3f6a5",
+  "datasets_dir": "/home/userA/datasets",
+  "weights_dir": "/home/userA/yolo_uv/weights",
+  "runs_dir": "/home/userA/yolo_uv/runs",
+  "uuid": "a7580d324d0b644dbf787fe740a7b9540563bb9c0a3844faab97319a46af9fa2",
+  "sync": true,
+  "api_key": "",
+  "openai_api_key": "",
+  "clearml": true,
+  "comet": true,
+  "dvc": true,
+  "mlflow": true,
+  "neptune": true,
+  "raytune": true,
+  "tensorboard": false,
+  "wandb": false,
+  "vscode_msg": true,
+  "openvino_msg": true
+}
+💡 Learn more about Ultralytics Settings at https://docs.ultralytics.com/quickstart/#ultralytics-settings
+
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ yolo settings reset
+Settings reset successfully
+JSONDict("/home/userA/.config/Ultralytics/settings.json"):
+{
+  "settings_version": "0.0.7",
+  "datasets_dir": "/home/userA/yolo_uv/datasets",
+  "weights_dir": "weights",
+  "runs_dir": "runs",
+  "uuid": "ebe50968e8ba139707201743be1d0a1a21ead3ceb962aecae987502daea3c806",
   "sync": true,
   "api_key": "",
   "openai_api_key": "",
@@ -307,38 +389,147 @@ JSONDict("/home/userA/.config/Ultralytics/settings.json"):
 💡 Learn more about Ultralytics Settings at https://docs.ultralytics.com/quickstart/#ultralytics-settings
 ```
 
-重設路徑
+複製方法一的data.yaml  
 ```bash
-[userA@25a-lgn02 yolo_uv]$ uv run yolo settings reset
-Settings reset successfully
-JSONDict("/home/userA/.config/Ultralytics/settings.json"):
-{
-  "settings_version": "0.0.7",
-  "datasets_dir": "/home/userA/datasets",
-  "weights_dir": "/home/userA/yolo_uv/weights",
-  "runs_dir": "/home/userA/yolo_uv/runs",
-  "uuid": "d4edd4ffb825057647b10a1f6001adad0d2f9fca0643c991440f96d1d2a29b74",
-  "sync": true,
-  "api_key": "",
-  "openai_api_key": "",
-  "clearml": true,
-  "comet": true,
-  "dvc": true,
-  "mlflow": true,
-  "neptune": true,
-  "raytune": true,
-  "tensorboard": false,
-  "wandb": false,
-  "vscode_msg": true,
-  "openvino_msg": true
-}
-
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ cp ~/yolo/data.yaml data.yaml
 ```
 
-data.yaml可沿用方法一的data.yaml複製做來進行訓練
-
-提交工作與執行運算
+編輯Slurm script `run_uv.slurm`  
 ```bash
-[userA@25a-lgn02 yolo_uv]$ sbatch run_uv.slurm
-Submitted batch job 240027
+#!/bin/bash
+#SBATCH -A <ProjectID>           # iService Project id
+#SBATCH -J yolo                # job name
+#SBATCH -p dev                # partition dev normal normal2
+#SBATCH --nodes=1              # Maximum number of nodes to be allocated
+#SBATCH --ntasks-per-node=1    # Number of MPI tasks (i.e. processes)
+#SBATCH --cpus-per-task=12      # Number of cores per MPI task
+#SBATCH --gres=gpu:1
+#SBATCH -o %x_%j.out          # Path to the standard output file
+##SBATCH -t 0-06:00:00
+
+export CUDA_VISIBLE_DEVICES=0
+source .venv/bin/activate
+
+yolo detect train data=data.yaml model=yolo11x.pt epochs=60 imgsz=640 project=$SLURM_SUBMIT_DIR/runs
+deactivate
+```
+
+提交作業與查看計算節點的GPU使用量 
+```bash
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ sbatch run_uv.slurm
+Submitted batch job 286542
+
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ squeue -u userA
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+            286542       dev     yolo userA  R       0:46      1 25a-hgpn008
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ ssh 25a-hgpn008
+
+[userA@25a-hgpn008 ~]$ watch nvidia-smi
+Every 2.0s: nvidia-smi                                                                                25a-hgpn008: Fri Aug 21 09:40:39 2026
+
+Fri Aug 21 09:40:39 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:CA:00.0 Off |                    0 |
+| N/A   49C    P0            461W /  700W |   16079MiB / 143771MiB |     99%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         2740463      C   ...716/yolo_uv/.venv/bin/python3      16068MiB |
++-----------------------------------------------------------------------------------------+
+[userA@25a-hgpn008 ~]$ exit
+logout
+Connection to 25a-hgpn008 closed.
+
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ tail *286542*
+      54/60        15G     0.3647     0.2928     0.8508          5        640: 100% ━━━━━━━━━━━━ 10/10 8.5it/s 1.2s
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 5.7it/s 0.2s
+                   all         17         75      0.954       0.94      0.965      0.883
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+      55/60        15G     0.3588     0.3004     0.8677          5        640: 100% ━━━━━━━━━━━━ 10/10 8.7it/s 1.2s
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 1/1 5.6it/s 0.2s
+                   all         17         75      0.955      0.931      0.964      0.886
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ tail *286542*
+              snickers          5          6      0.972          1      0.995      0.871
+              starbust          2          2      0.912          1      0.995      0.945
+      three_musketeers          4          4      0.763      0.815      0.895      0.763
+             twizzlers          5          6          1      0.973      0.995      0.979
+Speed: 0.0ms preprocess, 1.4ms inference, 0.0ms loss, 0.4ms postprocess per image
+Results saved to /home/userA/yolo_uv/runs/train
+💡 Learn more at https://docs.ultralytics.com/modes/train
+```
+
+
+## 使用多GPU進行訓練，以兩張GPU為例
+編輯Slurm script `run_uv.slurm`  
+```bash
+#!/bin/bash
+#SBATCH -A <ProjectID>           # iService Project id
+#SBATCH -J yolo                # job name
+#SBATCH -p dev                # partition dev normal normal2
+#SBATCH --nodes=1              # Maximum number of nodes to be allocated
+#SBATCH --ntasks-per-node=1    # Number of MPI tasks (i.e. processes)
+#SBATCH --cpus-per-task=12      # Number of cores per MPI task
+#SBATCH --gres=gpu:2
+#SBATCH -o %x_%j.out          # Path to the standard output file
+##SBATCH -t 0-06:00:00
+
+export CUDA_VISIBLE_DEVICES=0,1
+source .venv/bin/activate
+
+yolo detect train data=data.yaml model=yolo11x.pt epochs=60 imgsz=640 project=$SLURM_SUBMIT_DIR/runs device=0,1
+
+deactivate
+```
+提交作業與查看計算節點的GPU使用量  
+```bash
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ squeue -u userA -o "%.9i %.9P %.12j %.10u %.2t %.10M %.6D %.16R %b"
+    JOBID PARTITION         NAME       USER ST       TIME  NODES NODELIST(REASON) TRES_PER_NODE
+   286562       dev         yolo   userA  R       1:18      1      25a-hgpn002 gres/gpu:2
+(yolo_uv) [userA@25a-lgn04 yolo_uv]$ ssh 25a-hgpn002
+[userA@25a-hgpn002 ~]$ watch nvidia-smi
+Every 2.0s: nvidia-smi                                                                                25a-hgpn002: Fri Aug 21 09:48:50 2026
+
+Fri Aug 21 09:48:50 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:3A:00.0 Off |                    0 |
+| N/A   47C    P0            329W /  700W |   11349MiB / 143771MiB |     85%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA H200                    On  |   00000000:BA:00.0 Off |                    0 |
+| N/A   46C    P0            322W /  700W |   10223MiB / 143771MiB |     79%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A         1623268      C   ...716/yolo_uv/.venv/bin/python3      11340MiB |
+|    1   N/A  N/A         1623269      C   ...716/yolo_uv/.venv/bin/python3      10214MiB |
++-----------------------------------------------------------------------------------------+
+
+[userA@25a-hgpn002 ~]$ exit
+logout
+Connection to 25a-hgpn002 closed.
 ```
