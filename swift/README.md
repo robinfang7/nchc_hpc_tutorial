@@ -109,7 +109,7 @@ swift sft \
 deactivate
 ```
 
-提交作業
+### 提交作業
 ```bash
 [userA@25a-lgn05 swift_uv]$ sbatch run.slurm
 Submitted batch job 287023
