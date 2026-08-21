@@ -7,11 +7,12 @@
 * yolo：YOLO是小型模型，可以在個人電腦上進行訓練。此專案說明如何移植到晶創主機訓練YOLO模型。  
 * horovod：Horovod分散式框架加速Tenslorflow、Pytorch模型於多GPU、多節點環境加速運算。  
 * pytorch_ddp：Pytorch的分散式訓練(DDP)實作。  
+* swift：大語言模型微調實作。  
 * miniWeather：在CPU叢集的小型流體力學實作。  
 
 ## 最新課程
-[晶創26/25 GPU叢集主機教育訓練-進階(線上課程)](https://edu.nchc.org.tw/course/one_course_introduction.asp?lms_auto_course_id=4153&from_course_list_url=homepage)  
 [![slider](https://cdn.phototourl.com/free/2026-08-21-c2c8b352-8990-4fe4-a1cb-a2dc38bb5582.png)](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/20260826_Nano4_slide.pdf)  
+[晶創26/25 GPU叢集主機教育訓練-進階(線上課程)](https://edu.nchc.org.tw/course/one_course_introduction.asp?lms_auto_course_id=4153&from_course_list_url=homepage)  
 上課時間：2026/8/26 (三) 13:30 - 16:30  
 上課地點：透過視訊會議系統進行線上教學  
 課程介紹：  
