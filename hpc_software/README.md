@@ -1,9 +1,7 @@
 # HPC叢集系統的軟體工具
-* [Slurm：任務調度工具，取得、查詢計算資源、提交作業。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Slurm.md)
-* [Lmod：環境管理工具，引用已安裝的編譯器、函式庫、應用程式。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/Lmod.md)
-* [Container：引用已封裝依賴項與應用程式的獨立環境。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/slurm_lmod_container/container.md)
-
-![安裝軟體流程](https://cdn.phototourl.com/free/2026-08-17-13850d00-f91d-4825-96b0-fb35bef91965.png)
+* [Slurm：任務調度工具，取得、查詢計算資源、提交作業。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/hpc_software/Slurm.md)
+* [Lmod：環境管理工具，引用已安裝的編譯器、函式庫、應用程式。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/hpc_software/Lmod.md)
+* [Container：引用已封裝依賴項與應用程式的獨立環境。](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/hpc_software/container.md)
 
 * 個人電腦與HPC叢集的軟體設定差異  
 
@@ -14,6 +12,8 @@
 | Lmod | 自行管理環境設定 | 需要 Lmod 管理軟體 |
 | 容器 | Docker、Singularity / Apptainer | Singularity / Apptainer |
 | 客製化容器映像檔 | 需要 Sudo 權限 | 無法製作容器映像檔 |
+
+![安裝軟體流程](https://cdn.phototourl.com/free/2026-08-17-13850d00-f91d-4825-96b0-fb35bef91965.png)
 
 ## 安裝軟體
 * 編譯語言：C/C++, Fortran, CUDA
