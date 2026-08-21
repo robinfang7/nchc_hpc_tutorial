@@ -11,7 +11,7 @@
 
 ## 最新課程
 [晶創26/25 GPU叢集主機教育訓練-進階(線上課程)](https://edu.nchc.org.tw/course/one_course_introduction.asp?lms_auto_course_id=4153&from_course_list_url=homepage)  
-[slider](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/20260826_Nano4_slide.pdf)  
+![slider(https://cdn.phototourl.com/free/2026-08-21-c2c8b352-8990-4fe4-a1cb-a2dc38bb5582.png)](https://github.com/robinfang7/nchc_hpc_tutorial/blob/main/20260826_Nano4_slide.pdf)  
 上課時間：2026/8/26 (三) 13:30 - 16:30  
 上課地點：透過視訊會議系統進行線上教學  
 課程介紹：  
