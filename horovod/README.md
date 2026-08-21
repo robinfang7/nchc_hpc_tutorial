@@ -252,13 +252,10 @@ export NCCL_IB_DISABLE=0                    # Enable InfiniBand if multi-node
 
 echo "SLURM_JOB_NODELIST=$SLURM_JOB_NODELIST"
 
-SECONDS=0
-
 SINGULARITY="singularity exec -B /work:/work --nv \
     /work/$(whoami)/sif/pytorch2301_hvd.sif"
 
 CMD="python pytorch_synthetic_benchmark.py"
-
 
 RUN="srun --mpi=pmix --cpu-bind=cores --nodes=$SLURM_NNODES --ntasks=$SLURM_NTASKS $SINGULARITY $CMD"
 echo $RUN; $RUN
