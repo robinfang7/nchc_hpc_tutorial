@@ -5,11 +5,10 @@ Horovod 是一個開源的分散式深度學習訓練框架，支援 TensorFlow�
 1. Horovod with Tensorflow 2.x(Keras)  
 2. Horovod with Pytorch  
 
-## Horovod with Tensorflow 2.x (Keras)  
+## Horovod with Tensorflow 2.x (Keras)
 下載Tensorflow 容器  
 `[userA@cbi-lgn01 ~]$ singularity pull tensorflow_24.05-tf2-py3.sif tensorflow_24.05-tf2-py3.sif`  
 `[userA@cbi-lgn01 ~]$ mv tensorflow_24.05-tf2-py3.sif /work/$(whoami)/sif/`  
-
 查看容器內的CUDA版本
 ```bash
 [userA@cbi-lgn01 ~]$ singularity exec /work/userA/sif/tensorflow_24.05-tf2-py3.sif nvcc --version
@@ -58,7 +57,7 @@ echo $RUN; $RUN
 ```
 `--ntasks-per-node`與`--gres=gpu:` 數目要一樣，1個task用1個GPU執行。
 
-提交工作
+提交作業
 ```bash
 [userA@cbi-lgn01 horovod]$ sbatch run_hvd.slurm
 Submitted batch job 297171
@@ -114,7 +113,7 @@ RUN="srun --mpi=pmix --cpu-bind=cores --nodes=$SLURM_NNODES --ntasks=$SLURM_NTAS
 echo $RUN; $RUN
 ```
 
-提交工作
+提交作業
 ```bash
 [userA@cbi-lgn01 horovod]$ sbatch run_hvd.slurm
 Submitted batch job 297202
@@ -153,10 +152,9 @@ export NCCL_NET_GDR_LEVEL=3                 # Enable GPUDirect RDMA on H100/H200
 export NCCL_SOCKET_IFNAME=ib0               # NCCL use infiniband  if multi-node
 export NCCL_IB_DISABLE=0                    # Enable InfiniBand if multi-node
 ...
-
 ```
 
-提交工作
+提交作業
 ```bash
 [userA@cbi-lgn01 horovod]$ sbatch run_hvd.slurm
 Submitted batch job 297159
