@@ -18,7 +18,7 @@ Activate with: source .venv/bin/activate
 # 安裝swift套件
 (swift_uv) [userA@25a-lgn02 swift_uv]$ uv pip install ms-swift -U --torch-backend=auto
 ```
-[已安裝套件清單](.requirements_list.md) 
+[已安裝套件清單](requirements_list.md) 
 
 ## 下載Huggingface模型與資料集
 ### 套件清單有huggingface-hub，選用access token登入
