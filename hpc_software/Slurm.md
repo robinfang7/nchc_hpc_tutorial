@@ -1,6 +1,6 @@
 # Slurm
 ### 簡介
-Slurm是一個用於 Linux 和 Unix 內核系統的自由開源的任務調度工具，Top500超級電腦廣泛採用。
+Slurm是一個用於 Linux 和 Unix 內核系統的自由開源的任務調度工具，Top500超級電腦廣泛採用。  
 Slurm 具有三個關鍵功能：  
 1. 它為使用者分配一段時間內對資源（計算節點）的獨佔或非獨佔存取權限，以便使用者執行工作。
 2. 它提供了一個框架，用於在已指派的節點集上啟動、執行和監控工作（通常是平行運算的作業）。
@@ -14,7 +14,7 @@ Slurm 具有三個關鍵功能：
 * 用戶發出查詢資源、提交作業的指令，**slurmctld**會跟計算節點溝通，看看有沒有閒置的資源，或是正在跑的作業。   
 * **slurmdbd**記錄所有歷史作業、帳號配額與帳單資訊。
 
-![Slurm components](https://cdn.phototourl.com/free/2026-08-13-8ee1b699-2d39-43f4-908c-bae6dc673622.png)
+![Slurm components](https://cdn.phototourl.com/free/2026-08-25-fa56d4f8-ca63-4c95-894a-bb1de52f82a5.png)
 
 ### Slurm Entities
 * Node 計算節點  
@@ -32,7 +32,7 @@ Slurm 具有三個關鍵功能：
    - 一個job step可以包含一個或多個tasks，每個task代表一個要在計算節點上執行的工作。
    - 在平行計算中，tasks通常用於執行同一個任務的多個實例，從而加速計算的進行。
 
-![Slurm Entities](https://i.meee.com.tw/CBHaGv7.png)
+![Slurm Entities](https://cdn.phototourl.com/free/2026-08-25-d5d0ed1c-0426-40da-b7bd-35e7f8306a37.png)
 
 ## Partition
 * 晶創26  
@@ -259,7 +259,7 @@ Nano4/5的--cpus-per-task範圍是1~12。
 `scancel <JobID>`  
 
 ### srun
-`srun -A <ProjectID> -p <partition> -N 1 -n 1 --gres=gpu:1 <commamd>`
+`srun -A <ProjectID> -p <partition> -N 1 -n 1 --gres=gpu:1 <commamd>`  
 -A 計畫代碼  
 -p partition  
 -N 取得節點數量  
