@@ -85,7 +85,7 @@ names:
 [userA@25a-lgn04 ~]$ mv ultralytics-8.4.115.sif /work/$(whoami)/sif/
 ```
 
-提交工作與訓練YOLO模型  
+提交作業與訓練YOLO模型  
 * 注意1：訓練YOLO模型前，為了驗證有啟用AMP，程式碼會自行下載`yolo26n.pt`。實際訓練的模型為 `model=yolo11x.pt`。  
 * 注意2：ultralytics容器的預設工作路徑是`/ultralytics`，在 `singularity exec` 加上 `--pwd $PWD` 參數，強迫容器將執行目錄切換至目前宿主機工作目錄，避免 relative path 定位到 `/ultralytics`。  
 ```bash
@@ -99,12 +99,12 @@ Submitted batch job 238642
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
             238642       dev     yolo userA  R       0:11      1 25a-hgpn009
 [userA@25a-lgn04 yolo]$ ssh 25a-hgpn009
-The authenticity of host '25a-hgpn009 (172.21.100.9)' can't be established.
+The authenticity of host '25a-hgpn009 (172.21.x.x)' can't be established.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
 [userA@25a-hgpn009 ~]$ watch nvidia-smi
-Every 2.0s: nvidia-smi                                                                                 25a-hgpn009: Fri Aug  7 11:22:46 2026
+Every 2.0s: nvidia-smi                                                        25a-hgpn009: Fri Aug  7 11:22:46 2026
 
 Fri Aug  7 11:22:46 2026
 +-----------------------------------------------------------------------------------------+
@@ -425,7 +425,7 @@ Submitted batch job 286542
 (yolo_uv) [userA@25a-lgn04 yolo_uv]$ ssh 25a-hgpn008
 
 [userA@25a-hgpn008 ~]$ watch nvidia-smi
-Every 2.0s: nvidia-smi                                                                                25a-hgpn008: Fri Aug 21 09:40:39 2026
+Every 2.0s: nvidia-smi                                                           25a-hgpn008: Fri Aug 21 09:40:39 2026
 
 Fri Aug 21 09:40:39 2026
 +-----------------------------------------------------------------------------------------+
