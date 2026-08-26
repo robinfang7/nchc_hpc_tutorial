@@ -68,4 +68,4 @@ Please check your push token.
 
 ![JupyterNotebook](https://cdn.phototourl.com/free/2026-08-21-e2fbc8f7-d31e-4f19-b5e8-a6b4f7350672.png)
 
-4. 不要用Jupyter Notebook進行計算，Jupyter Notebook直接使用登入節點計算。  
+4. 不要用Jupyter Notebook進行計算，使用登入節點計算。  
