@@ -85,6 +85,7 @@ idle: 整台節點是閒置
 mix: 節點已使用(未確定完全佔用)  
 drain: 維護中  
 
+### 查看partition資訊
 ```bash
 [userA@25a-lgn05 ~]$ scontrol show partition dev
 PartitionName=dev
@@ -116,7 +117,8 @@ PartitionName=8gpus
 ```
 dev's MaxTime=04:00:00, 8gpus's MaxTime=2-00:00:00
 
-### 查看QOS
+### 查看QOS(Quality of Service)
+QOS用來控制與調整工作（Job）優先權及資源限制的機制。   
 ```bash
 [userA@cbi-lgn01 ~]$ sacctmgr show qos format=name,priority
       Name   Priority
