@@ -157,11 +157,15 @@ NodeName=hgpn01 Arch=x86_64 CoresPerSocket=56
 
 ### 查看計算節點的閒置GPU數量`check_idle_gpu.sh`
 ```bash
-[userA@cbi-lgn01 ~]$ chmod +x check_idle_gpu.sh
+[userA@cbi-lgn01 ~]$ chmod 744 check_idle_gpu.sh
 [userA@cbi-lgn01 ~]$ ./check_idle_gpu.sh
-節點: hgpn01          | 總共: 8 張 | 已用: 3 張 | 👉 剩餘閒置: 5 張
-節點: hgpn04          | 總共: 8 張 | 已用: 7 張 | 👉 剩餘閒置: 1 張
-節點: hgpn06          | 總共: 8 張 | 已用: 2 張 | 👉 剩餘閒置: 6 張
+節點: hgpn01          | H100   | 總共: 8 張 | 已用: 6 張 | 👉 剩餘閒置: 2 張
+節點: hgpn02          | H100   | 總共: 8 張 | 已用: 7 張 | 👉 剩餘閒置: 1 張
+節點: hgpn03          | H100   | 總共: 8 張 | 已用: 7 張 | 👉 剩餘閒置: 1 張
+節點: hgpn43          | H200   | 總共: 8 張 | 已用: 7 張 | 👉 剩餘閒置: 1 張
+--------------------------------------------------
+摘要：H100     共 3 個節點有閒置，合計 4 張
+摘要：H200     共 1 個節點有閒置，合計 1 張
 ```
 
 ### 查看目前Job的狀態
