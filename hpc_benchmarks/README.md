@@ -12,3 +12,5 @@
 [Run HPL-MxP(Nvidia HPC-benchmarks container) on Nano4 H200 GPU cluster](mxp_h200.md)
 
 ## HPCG
+
+[Run HPCG with Inter OneAPI compiler on Forerunner1](hpcg_oneapi_f1.md)
